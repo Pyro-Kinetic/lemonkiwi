@@ -4,7 +4,7 @@
 
 <div align="center" style="text-align: center;">
   <a href="https://pyro-kineticz.itch.io/lemon-kiwi">
-    <img src="https://github.com/user-attachments/assets/d341f83a-884b-4311-9dcf-b8127c06d7a1" alt="Play on itch.io">
+    <img src="./graphics/lemon-kiwi.png" alt="Play on itch.io">
   </a>
 </div>
 
