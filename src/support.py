@@ -1,41 +1,22 @@
-import os
 import sys
-import pygame
-from os import walk
 from csv import reader
+from os import walk
+from pathlib import Path
 
+import pygame
 
-# def resource_path(relative_path):
-#     """ Get absolute path to resource, works for dev and for PyInstaller """
-#     base_path = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
-#     return os.path.join(base_path, relative_path)
-
-# def resource_path(relative_path):
-#     """ Get absolute path to resource, works for dev and for PyInstaller """
-#     base_path = getattr(sys, '_MEIPASS', os.path.abspath("."))
-#     return os.path.join(base_path, relative_path)
-
-# def resource_path(relative_path):
-#     """ Get absolute path to resource, works for dev and for PyInstaller """
-#     if hasattr(sys, '_MEIPASS'):
-#         base_path = sys._MEIPASS
-#         relative_path = relative_path.replace("../", "").lstrip("/")
-#     else:
-#         base_path = os.path.abspath(".")
-#
-#     return os.path.join(base_path, relative_path)
 
 def resource_path(relative_path):
     """ Get absolute path to resource, works for dev and for PyInstaller """
+    base_path_str = getattr(sys, '_MEIPASS', None)
 
-    base_path = getattr(sys, '_MEIPASS', None)
-
-    if base_path:
-        relative_path = relative_path.replace("../", "").lstrip("/")
+    if base_path_str:
+        base_path = Path(base_path_str)
     else:
-        base_path = os.path.abspath(".")
+        # In development, use the folder where THIS script is located
+        base_path = Path(__file__).resolve().parent
 
-    return os.path.join(base_path, relative_path)
+    return str(base_path / relative_path)
 
 
 def import_csv_layout(path):
